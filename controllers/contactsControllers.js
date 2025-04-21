@@ -38,9 +38,7 @@ export const deleteContactController = ctrlWrapper(async (req, res) => {
     throw HttpError(404, 'Not found');
   }
 
-  res.status(200).json({
-    message: 'Contact successfully deleted',
-  });
+  res.status(200).json(data);
 });
 
 export const updateStatusContactController = ctrlWrapper(async (req, res) => {

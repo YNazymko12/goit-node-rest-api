@@ -1,4 +1,5 @@
 import Joi from 'joi';
+import { phoneRegexp } from '../constants/regexp.js';
 
 export const createContactSchema = Joi.object({
   name: Joi.string().min(2).max(100).required().label('name').messages({
@@ -11,15 +12,11 @@ export const createContactSchema = Joi.object({
     'string.email': 'Email must be a valid email',
     'string.empty': 'Email cannot be empty',
   }),
-  phone: Joi.string()
-    .pattern(/^\(\d{3}\)\s\d{3}-\d{4}$/)
-    .required()
-    .label('phone')
-    .messages({
-      'any.required': 'Phone is required',
-      'string.empty': 'Phone cannot be empty',
-      'string.pattern.base': 'Phone must be in format (XXX) XXX-XXXX',
-    }),
+  phone: Joi.string().pattern(phoneRegexp).required().label('phone').messages({
+    'any.required': 'Phone is required',
+    'string.empty': 'Phone cannot be empty',
+    'string.pattern.base': 'Phone must be in format (XXX) XXX-XXXX',
+  }),
   favorite: Joi.boolean(),
 });
 
@@ -32,13 +29,10 @@ export const updateContactSchema = Joi.object({
     'string.empty': 'Email cannot be empty',
     'string.email': 'Email must be a valid email',
   }),
-  phone: Joi.string()
-    .pattern(/^\(\d{3}\)\s\d{3}-\d{4}$/)
-    .label('phone')
-    .messages({
-      'string.empty': 'Phone cannot be empty',
-      'string.pattern.base': 'Phone must be in format (XXX) XXX-XXXX',
-    }),
+  phone: Joi.string().pattern(phoneRegexp).label('phone').messages({
+    'string.empty': 'Phone cannot be empty',
+    'string.pattern.base': 'Phone must be in format (XXX) XXX-XXXX',
+  }),
   favorite: Joi.boolean(),
 })
   .min(1)

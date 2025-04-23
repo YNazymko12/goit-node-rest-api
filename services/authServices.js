@@ -48,15 +48,16 @@ export const loginUser = async data => {
     throw HttpError(401, 'Email or password invalid');
   }
 
-  const payload = {
-    email,
-  };
-
-  const token = generateToken(payload);
+  const token = generateToken({ email });
 
   await user.update({ token });
 
-  return { token };
+  const { subscription } = user;
+
+  return {
+    token,
+    user: { email, subscription },
+  };
 };
 
 export const logoutUser = async id => {

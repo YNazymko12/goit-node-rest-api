@@ -15,7 +15,7 @@ export const getContact = query =>
 export const addContact = data => Contact.create(data);
 
 export const updateContact = async (query, data) => {
-  const contact = await getContactById(query);
+  const contact = await getContact(query);
   if (!contact) return null;
 
   return contact.update(data, {

@@ -48,9 +48,15 @@ export const deleteContactController = ctrlWrapper(async (req, res) => {
 
 export const updateStatusContactController = ctrlWrapper(async (req, res) => {
   const { id } = req.params;
-  const data = await contactsService.updateStatusContact(id, req.body);
+  const { id: owner } = req.user;
+
+  const data = await contactsService.updateStatusContact(
+    { id, owner },
+    req.body
+  );
   if (!data) {
     throw HttpError(404, `Contact not found`);
   }
+
   res.json(data);
 });

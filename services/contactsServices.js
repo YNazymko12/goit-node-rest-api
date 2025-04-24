@@ -5,7 +5,10 @@ export const getContacts = query =>
     where: query,
   });
 
-export const getContactById = id => Contact.findByPk(id);
+export const getContactById = ({ id, owner }) =>
+  Contact.findOne({
+    where: { id, owner },
+  });
 
 export const getContact = query =>
   Contact.findOne({
@@ -14,22 +17,23 @@ export const getContact = query =>
 
 export const addContact = data => Contact.create(data);
 
-export const updateContact = async (query, data) => {
-  const contact = await getContact(query);
+export const updateContact = async ({ id, owner }, data) => {
+  const contact = await getContactById({ id, owner });
   if (!contact) return null;
 
-  return contact.update(data, {
-    returning: true,
-  });
+  return contact.update(data, { returning: true });
 };
 
-export const deleteContact = query =>
-  Contact.destroy({
-    where: query,
-  });
+export const deleteContact = async ({ id, owner }) => {
+  const contact = await getContactById({ id, owner });
+  if (!contact) return null;
 
-export const updateStatusContact = async (id, { favorite }) => {
-  const contact = await getContactById(id);
+  await contact.destroy();
+  return contact;
+};
+
+export const updateStatusContact = async ({ id, owner }, { favorite }) => {
+  const contact = await getContactById({ id, owner });
   if (!contact) return null;
 
   return contact.update({ favorite }, { returning: true });

@@ -16,7 +16,7 @@
 
 ![Results](./assets/current_error.png)
 
-![Results](./assets/db.png)
+![Results](./assets/avatar.png)
 
 ![Results](./assets/addContact.png)
 

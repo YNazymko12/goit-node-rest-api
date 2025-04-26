@@ -1,5 +1,6 @@
 import fs from 'fs/promises';
 import path from 'path';
+import HttpError from '../helpers/HttpError.js';
 import * as authServices from '../services/authServices.js';
 import ctrlWrapper from '../decorators/ctrlWrapper.js';
 

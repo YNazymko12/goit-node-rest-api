@@ -1,31 +1,23 @@
-# Домашнє завдання. Тема 7. Аутентифікація та авторизація
+# Домашнє завдання. Тема 11. Websockets
 
 ### Результати виконаного ДЗ
 
-![Results](./assets/register_201.png)
+![Results](./assets/register.png)
 
-![Results](./assets/register_error.png)
+![Results](./assets/login_401.png)
+
+![Results](./assets/email.png)
+
+![Results](./assets/message.png)
 
 ![Results](./assets/login_200.png)
 
-![Results](./assets/login_error.png)
+![Results](./assets/verify_400_missing.png)
 
-![Results](./assets/logout_204.png)
+![Results](./assets/verify_400_passed.png)
 
-![Results](./assets/current_200.png)
+![Results](./assets/verify_200.png)
 
-![Results](./assets/current_error.png)
+![Results](./assets/verify_404.png)
 
-![Results](./assets/avatar.png)
-
-![Results](./assets/addContact.png)
-
-![Results](./assets/getContacts.png)
-
-![Results](./assets/getContact.png)
-
-![Results](./assets/updateContact.png)
-
-![Results](./assets/deleteContact.png)
-
-![Results](./assets/favourite.png)
+![Results](./assets/verifyToken_200.png)
